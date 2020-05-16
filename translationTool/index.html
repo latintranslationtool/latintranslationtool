@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Translation Tool</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+	<div id="submit-text-wrapper">
+		<textarea id="submit-text" placeholder="Paste translation text here" autofocus></textarea>
+		<button id="submit-text-button">Submit</button>
+	</div>
+
+	<div id="translation-wrapper"></div>
+
+	<div id="word-info-wrapper">
+		<form class="form">
+			<input class="form-input" type="text" id="name" placeholder="word" readonly autocomplete="off">
+			<input class="form-input" type="text" id="meaning" placeholder="meaning" autocomplete="off">
+			<input class="form-input" type="text" id="part" placeholder="part of speech" autocomplete="off">
+			<input class="form-input" type="text" id="case" placeholder="case" autocomplete="off">
+			<input class="form-input" type="text" id="gender" placeholder="gender" autocomplete="off">
+			<input class="form-input" type="text" id="number" placeholder="number" autocomplete="off">
+
+			<input class="form-input" type="text" id="person" placeholder="person" autocomplete="off">
+			<input class="form-input" type="text" id="tense" placeholder="tense" autocomplete="off">
+			<input class="form-input" type="text" id="voice" placeholder="voice" autocomplete="off">
+			<input class="form-input" type="text" id="mood" placeholder="mood" autocomplete="off">
+			
+			
+			<input type="submit" id='form-submit' value="enter">
+		</form>
+		
+	</div>
+
+	<form class="new-text" style="clear:both">
+		<!--<input type="text" id="new-text-input" placeholder="enter new text name + date">-->
+	</form>
+
+	<script src="jquery-3.0.0.min.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
