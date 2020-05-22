@@ -43,7 +43,8 @@ $('#submit-text-button').on('click', function() {
         person:'', //1st 2nd 3rd VERBS ONLY
         tense:'', //VERBS ONLY - 
         voice:'',  // active, passive, deponent VERBS ONLY
-        mood:''//subjunctive,indicative,imperative VERBS ONLY
+        mood:'',//subjunctive,indicative,imperative VERBS ONLY
+        other:''
       });
     }
 
@@ -99,6 +100,7 @@ database.ref('/translationText/').child(referenceWord).on('value', function(resu
       document.getElementById('voice').value = wordInfo.voice
       document.getElementById('tense').value = wordInfo.tense
       document.getElementById('mood').value = wordInfo.mood
+      document.getElementById('other').value = wordInfo.other
 
       /*if ($('.form-input').val() == undefined) {
         $(this).val('')
@@ -126,6 +128,7 @@ $('.form').on('submit', function(e) {
   var formTense = $('#tense').val();
   var formVoice = $('#voice').val();
   var formMood = $('#mood').val();
+  var formOther = $('#other').val();
 
   if (wordID != undefined) {
     database.ref('/translationText/').child(referenceWord).child(wordID).set({
@@ -138,7 +141,8 @@ $('.form').on('submit', function(e) {
           person:formPerson, //1st 2nd 3rd VERBS ONLY
           tense:formTense, //VERBS ONLY - 
           voice:formVoice, //active, passive, deponent VERBS ONLY
-          mood:formMood //subjunctive,indicative,imperative VERBS ONLY
+          mood:formMood, //subjunctive,indicative,imperative VERBS ONLY
+          other: formOther
     }).then(function(){
       $('#form-submit').addClass('done');
       setTimeout(function(){

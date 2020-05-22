@@ -87,8 +87,9 @@ body::-webkit-scrollbar {
 	background-color: #eeffee;
 	border-top:0.5px solid #aaddaa;
 }
-#mood{
-	border-bottom:0.5px solid #aaddaa;
+#other{
+	border-bottom:0.5px solid #bbbbbb;
+	border-top:0.5px solid #bbbbbb;
 }
 #number {
  background-color: #ffffee;
@@ -105,7 +106,10 @@ body::-webkit-scrollbar {
 	background-color: #eeffee;
 }
 #number:focus {
- background-color: #ffffee;
+	background-color: #ffffee;
+}
+#other:focus {
+	background-color: #fff
 }
 
 input[type="submit"] {
