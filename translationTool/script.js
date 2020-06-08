@@ -17,7 +17,7 @@ var wordID;
 var words = [];
 
 
-var referenceWord = prompt("Enter name:"); //change this every time you start a new text
+var referenceWord = prompt("Enter code:"); //change this every time you start a new text
 $('title').text(referenceWord); // make the title of the webpage the name of the text
 
 
@@ -29,7 +29,7 @@ $('#submit-text-button').on('click', function() {
     $('#submit-text-button').fadeOut();
     $('#submit-text').fadeOut();
 
-    var stuff = translationText.split('\n').join(' ').split('  ').join(' ').split(' ');
+    var stuff = translationText/*.split('\n').join(' ')*/.split('  ').join(' ').split(' ');
     //console.log(stuff);
 
     for (var i in stuff) {
@@ -218,6 +218,10 @@ $(document).on('keydown', function(e) {
     $('.selected').next().click();
   } else if (e.key == 'ArrowLeft') {
     $('.selected').prev().click();
+  } else if (e.key == 'ArrowUp') {
+
+  } else if (e.key == 'ArrowDown') {
+    
   }
 })
 
