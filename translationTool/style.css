@@ -12,10 +12,15 @@ br {
 	opacity: 0;
 }
 
+#submit-text{
+	width:500px;
+	height:500px;
+}
+
 #translation-wrapper {
 	/*width:calc(100% - 260px);*/
 	max-width: 400px;
-	margin:20px 260px 0 20px;
+	margin:20px 310px 0 20px;
 	padding:0 5px;
 
 	
@@ -38,7 +43,7 @@ br {
 }
 
 #word-info-wrapper {
-	max-width:200px;
+	max-width:250px;
 	margin:0 auto;
 	padding:5px;
 

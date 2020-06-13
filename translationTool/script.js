@@ -29,7 +29,7 @@ $('#submit-text-button').on('click', function() {
     $('#submit-text-button').fadeOut();
     $('#submit-text').fadeOut();
 
-    var stuff = translationText/*.split('\n').join(' ')*/.split('  ').join(' ').split(' ');
+    var stuff = translationText.split('\n').join(' <br>').split('  ').join(' ').split(' ');
     //console.log(stuff);
 
     for (var i in stuff) {
@@ -61,6 +61,8 @@ $('#submit-text-button').on('click', function() {
 
 });
 
+var names;
+
 database.ref('/translationText/').child(referenceWord).on('value', function(results) {
   var allResults = results.val();
 
@@ -90,7 +92,13 @@ database.ref('/translationText/').child(referenceWord).on('value', function(resu
       var wordInfo = snapshot.val();
       //console.log(wordInfo)
 
-      document.getElementById('name').value = wordInfo.name
+      names = wordInfo.name;
+      
+      var nam = wordInfo.name.split(">").pop()
+      
+
+      document.getElementById('name').value = nam
+
       document.getElementById('meaning').value = wordInfo.meaning
       document.getElementById('part').value = wordInfo.part
       document.getElementById('number').value = wordInfo.number
@@ -130,9 +138,12 @@ $('.form').on('submit', function(e) {
   var formMood = $('#mood').val();
   var formOther = $('#other').val();
 
+  //console.log(names.split('>').pop());
+  //console.log(names);
+
   if (wordID != undefined) {
     database.ref('/translationText/').child(referenceWord).child(wordID).set({
-          name:formName,
+          name:names,
           meaning:formMeaning,
           part:formPart, //noun verb adj adverb
           number:formNumber, //plural singular
@@ -218,13 +229,26 @@ $(document).on('keydown', function(e) {
     $('.selected').next().click();
   } else if (e.key == 'ArrowLeft') {
     $('.selected').prev().click();
-  } else if (e.key == 'ArrowUp') {
+  } 
+})
 
+$(document).on('keydown', '.form-input', function(e) {
+  if (e.key == 'ArrowUp') {
+    $(this).prev().focus()
   } else if (e.key == 'ArrowDown') {
-    
+    $(this).next().focus()
+  }
+})
+
+$(document).on('keydown', function(e) {
+  if (e.key == 'PageUp') {
+    window.open('https://en.wiktionary.org/wiki/'+$('#name').val().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase()+'#Latin', '_blank')
+  } else if (e.key == 'PageDown') {
+    window.open('http://www.perseus.tufts.edu/hopper/morph?l='+$('#name').val().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase()+'&la=la', '_blank')
   }
 })
 
 $('#name').on('click', function() {
-  window.open('https://en.wiktionary.org/wiki/'+$(this).val().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")+'#Latin', '_blank')
+  window.open('https://en.wiktionary.org/wiki/'+$(this).val().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase()+'#Latin', '_blank')
 })
+
